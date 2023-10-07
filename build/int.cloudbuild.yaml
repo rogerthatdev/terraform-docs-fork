@@ -21,16 +21,13 @@ steps:
     - -c
     - | 
       git fetch --unshallow
-      
-      # get the changed files
       git diff origin/${_BASE_BRANCH}..origin/${_HEAD_BRANCH} --name-only > _changed_files
-      
-      # parse out the folders that have changed
-      cat _changed_files | grep '/' | cut -d '/' -f1 | sort | uniq | tr '\n' ' ' > _changed_folders
-
-      echo "Change files:" && cat _changed_files
-      echo "Change folders:" && cat _changed_folders
-      echo "EOF"
+      sed 's/\/.*/\//' _changed_files > _changed_folders
+      for d in */; do
+          if ! grep -q ^$d _changed_folders; then
+            rm -rf $d;
+          fi
+      done
       ls
 - id: prepare
   name: 'gcr.io/cloud-foundation-cicd/cft/developer-tools:1.16.5'
