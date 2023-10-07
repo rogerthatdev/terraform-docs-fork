@@ -31,6 +31,7 @@ steps:
       echo "Change files:" && cat _changed_files
       echo "Change folders:" && cat _changed_folders
       echo "EOF"
+      ls
 - id: prepare
   name: 'gcr.io/cloud-foundation-cicd/cft/developer-tools:1.16.5'
   # args: ['/bin/bash', '-c', 'source /usr/local/bin/task_helper_functions.sh && prepare_environment']
