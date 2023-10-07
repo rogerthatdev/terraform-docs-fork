@@ -19,7 +19,7 @@
 # [START cloudrun_noauth_parent_tag]
 # [START cloudrun_service_noauth]
 resource "google_cloud_run_v2_service" "default" {
-  name     = "cloudrun-srv"
+  name     = "cloudrun-srv2"
   location = "us-central1"
 
   template {
