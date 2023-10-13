@@ -22,7 +22,9 @@ steps:
    - -c
    - |
      pwd
-     ls -lah 
+     ls -lah
+     echo "ENV VARS!" 
+     env
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
