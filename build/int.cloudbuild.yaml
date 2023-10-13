@@ -17,7 +17,12 @@ steps:
 - id: see all
   name: 'gcr.io/cloud-foundation-cicd/cft/developer-tools:1.16.5'
   # args: ['/bin/bash', '-c', 'source /usr/local/bin/task_helper_functions.sh && prepare_environment']
-  args: ['/bin/bash', '-c', 'ls']
+  entrypoint: bash
+  args:
+   - -c
+   - |
+     pwd
+     ls -lah 
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
@@ -36,7 +41,12 @@ steps:
 - id: prepare
   name: 'gcr.io/cloud-foundation-cicd/cft/developer-tools:1.16.5'
   # args: ['/bin/bash', '-c', 'source /usr/local/bin/task_helper_functions.sh && prepare_environment']
-  args: ['/bin/bash', '-c', 'ls']
+  entrypoint: bash
+  args:
+   - -c
+   - |
+     pwd
+     ls -lah 
 #   env:
 #   - 'TF_VAR_org_id=$_ORG_ID'
 #   - 'TF_VAR_folder_id=$_FOLDER_ID'
