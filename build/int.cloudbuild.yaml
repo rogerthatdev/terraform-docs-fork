@@ -21,14 +21,14 @@ steps:
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
-  args: 
+  args:
     - -c
-    - | 
+    - |
       git fetch --unshallow
       git diff origin/${_BASE_BRANCH}..origin/${_HEAD_BRANCH} --name-only > _changed_files
       sed 's/\/.*/\//' _changed_files > _changed_folders
       for d in */; do
-          if ! grep -q ^$d _changed_folders; then
+          if ! grep -q "^$d" _changed_folders && [[ "$d" != "test/" ]]; then
             rm -rf $d;
           fi
       done
