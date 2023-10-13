@@ -22,9 +22,7 @@ steps:
    - -c
    - |
      pwd
-     ls -lah
-     echo $_BASE_BRANCH
-     echo $_HEAD_BRANCH
+     ls .git/*
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
