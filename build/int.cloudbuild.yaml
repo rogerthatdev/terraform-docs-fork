@@ -23,14 +23,15 @@ steps:
    - |
      pwd
      ls -lah
-     echo "ENV VARS!" 
-     env
+     echo $_BASE_BRANCH
+     echo $_HEAD_BRANCH
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
   args:
     - -c
     - |
+      git log
       git fetch --unshallow
       git diff origin/${_BASE_BRANCH}..origin/${_HEAD_BRANCH} --name-only > _changed_files
       sed 's/\/.*/\//' _changed_files > _changed_folders
