@@ -14,6 +14,10 @@
 
 timeout: 14400s
 steps:
+- id: see all
+  name: 'gcr.io/cloud-foundation-cicd/cft/developer-tools:1.16.5'
+  # args: ['/bin/bash', '-c', 'source /usr/local/bin/task_helper_functions.sh && prepare_environment']
+  args: ['/bin/bash', '-c', 'ls']
 - id: retrieve delta
   name: gcr.io/cloud-builders/git
   entrypoint: bash
