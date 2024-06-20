@@ -16,6 +16,7 @@
 
 # [START compute_external_address_parent_tag]
 # [START compute_regional_external_vm_address]
+
 resource "google_compute_address" "default" {
   name   = "my-test-static-ip-address"
   region = "us-central1"
