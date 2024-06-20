@@ -15,6 +15,7 @@
  */
 
 
+
 # [START compute_disk_parent_tag]
 # [START compute_disk_clone_single_zone]
 resource "google_compute_disk" "default" {
